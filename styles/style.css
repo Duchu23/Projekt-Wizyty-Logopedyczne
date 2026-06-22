@@ -1,0 +1,332 @@
+/* =========================================================
+   style.css – wspólny styl całej aplikacji.
+   Kolorystyka: spokojne pastele (gabinet logopedyczny dla dzieci).
+   ========================================================= */
+
+:root {
+    --tlo: #f4f8fb;
+    --glowny: #3a86b8;      /* spokojny niebieski */
+    --glowny-ciemny: #2c6a93;
+    --akcent: #f4a261;      /* ciepły pomarańcz */
+    --tekst: #2b2d42;
+    --karta: #ffffff;
+    --obramowanie: #d9e6ef;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: var(--tlo);
+    color: var(--tekst);
+    line-height: 1.5;
+}
+
+a { color: var(--glowny); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Górny pasek z menu ---------- */
+.topbar {
+    background: var(--glowny);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.topbar .logo { font-size: 1.3rem; font-weight: bold; }
+.menu { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.menu a { color: #fff; font-weight: 500; }
+.menu .admin-link { background: var(--akcent); padding: 6px 12px; border-radius: 6px; }
+.menu .witaj { opacity: 0.9; font-style: italic; }
+.menu .logout { background: rgba(255,255,255,0.15); padding: 6px 12px; border-radius: 6px; }
+
+/* ---------- Kontener treści ---------- */
+.container { max-width: 1000px; margin: 24px auto; padding: 0 20px; }
+h1 { color: var(--glowny-ciemny); }
+.powrot { display: inline-block; margin-bottom: 12px; }
+.info { color: #777; font-style: italic; }
+
+/* ---------- Filtry kategorii ---------- */
+.kategorie-filtry { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.filtr {
+    background: var(--karta);
+    border: 1px solid var(--obramowanie);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+.filtr:hover { background: var(--glowny); color: #fff; text-decoration: none; }
+
+/* ---------- Wyszukiwanie ---------- */
+.szukaj-box { position: relative; margin-bottom: 20px; }
+#poleWyszukiwania {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--obramowanie);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+#wyniki-szukania { margin-top: 6px; }
+.wyniki-lista { list-style: none; padding: 0; margin: 0; }
+.wyniki-lista li {
+    background: var(--karta);
+    border: 1px solid var(--obramowanie);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tag { background: var(--tlo); padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; }
+
+/* ---------- Tabela ---------- */
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--karta);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.tabela th, .tabela td { padding: 12px; text-align: left; border-bottom: 1px solid var(--obramowanie); }
+.tabela th { background: var(--glowny); color: #fff; }
+.tabela tr:hover td { background: #eef6fb; }
+.miniatura { width: 70px; height: 70px; object-fit: cover; border-radius: 6px; }
+.akcje a { margin-right: 8px; }
+
+/* ---------- Szczegóły ćwiczenia ---------- */
+.szczegoly { display: flex; gap: 24px; flex-wrap: wrap; background: var(--karta);
+             padding: 24px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+.szczegoly-foto img { width: 280px; max-width: 100%; border-radius: 8px; }
+.szczegoly-dane { flex: 1; min-width: 280px; }
+.meta { border-collapse: collapse; margin: 12px 0; }
+.meta th { text-align: left; padding: 4px 16px 4px 0; color: #666; }
+.meta td { padding: 4px 0; }
+.opis { margin: 16px 0; }
+.srednia { font-size: 1.1rem; }
+
+.fav-toggle {
+    margin-top: 12px;
+    background: var(--akcent);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.fav-toggle:hover { opacity: 0.9; }
+
+/* ---------- Komentarze ---------- */
+.komentarze { margin-top: 32px; }
+.form-komentarz, .form-duzy, .auth-box form {
+    display: flex; flex-direction: column; gap: 12px;
+    background: var(--karta); padding: 20px; border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); margin-bottom: 24px;
+}
+.form-komentarz label, .form-duzy label, .auth-box label {
+    display: flex; flex-direction: column; font-weight: 500; gap: 4px;
+}
+input, select, textarea {
+    padding: 10px; border: 1px solid var(--obramowanie); border-radius: 6px;
+    font-size: 1rem; font-family: inherit;
+}
+button {
+    background: var(--glowny); color: #fff; border: none;
+    padding: 10px 18px; border-radius: 8px; font-size: 1rem; cursor: pointer;
+    align-self: flex-start;
+}
+button:hover { background: var(--glowny-ciemny); }
+
+.komentarz {
+    background: var(--karta); border: 1px solid var(--obramowanie);
+    border-radius: 8px; padding: 14px; margin-bottom: 12px;
+}
+.komentarz-naglowek { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 6px; }
+.komentarz-naglowek .data { color: #999; font-size: 0.85rem; margin-left: auto; }
+.delete-review { background: #e76f51; margin-top: 8px; }
+.delete-review:hover { background: #c75a3f; }
+
+/* ---------- Karty (ulubione) ---------- */
+.karty { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.karta { background: var(--karta); border: 1px solid var(--obramowanie);
+         border-radius: 10px; padding: 12px; text-align: center; }
+.karta img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; }
+.karta-kategoria { color: #888; font-size: 0.85rem; }
+
+/* ---------- Strony logowania/rejestracji ---------- */
+.auth-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.auth-box { background: var(--karta); padding: 32px; border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1); width: 360px; max-width: 90%; text-align: center; }
+.auth-box h1 { margin-top: 0; }
+.auth-box form { box-shadow: none; padding: 0; }
+.auth-switch { margin-top: 8px; }
+.blad { color: #c0392b; }
+.komunikat { color: #27ae60; }
+
+/* =========================================================
+   NOWE: strona główna, informacje o klinice, wizyty
+   ========================================================= */
+
+/* Logo jako link (bez podkreślenia) */
+.topbar .logo a { color: inherit; text-decoration: none; }
+
+/* Sekcja powitalna na stronie głównej */
+.hero {
+    background: linear-gradient(135deg, var(--glowny) 0%, var(--glowny-ciemny) 100%);
+    color: #fff;
+    padding: 40px 32px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+}
+.hero h1 { margin-top: 0; color: #fff; }
+.hero p { font-size: 1.05rem; max-width: 640px; opacity: 0.95; }
+.hero-akcje { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+.przycisk-glowny, .przycisk-poboczny {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.przycisk-glowny { background: var(--akcent); color: #fff; }
+.przycisk-poboczny { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.5); }
+.przycisk-glowny:hover { background: #e08e4a; }
+.przycisk-poboczny:hover { background: rgba(255,255,255,0.25); }
+
+/* Karty z informacjami o klinice */
+.info-karty { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.info-karta {
+    background: var(--karta);
+    border: 1px solid var(--obramowanie);
+    border-radius: 12px;
+    padding: 18px 20px;
+}
+.info-karta h3 { margin: 0 0 8px; color: var(--glowny-ciemny); }
+.info-karta p { margin: 0; line-height: 1.5; }
+
+.info-klinika, .zespol { margin-top: 32px; }
+
+/* Karty specjalistów */
+.karta-specjalista { text-align: left; }
+.karta-specjalista h3 { margin: 0 0 4px; color: var(--glowny-ciemny); }
+.tytul-spec { font-style: italic; color: #666; margin: 0 0 6px; }
+.specjalizacja { font-weight: 600; color: var(--akcent); margin: 0 0 10px; }
+.opis-spec { font-size: 0.92rem; line-height: 1.5; margin: 0; }
+
+/* Formularz umawiania wizyty */
+.form-wizyta select, .form-wizyta input[type="date"] { width: 100%; }
+.info-terminy { font-size: 0.9rem; color: var(--glowny-ciemny); min-height: 1.2em; margin: 4px 0 0; }
+
+/* Komunikaty (sukces / błąd) */
+.komunikat-ok  { background: #e3f4e9; border-left: 4px solid #43a047; }
+.komunikat-blad { background: #fdecea; border-left: 4px solid #e53935; }
+.komunikat { padding: 12px 16px; border-radius: 6px; margin-bottom: 18px; }
+
+/* Karty wizyt na stronie "Moje wizyty" */
+.wizyta {
+    background: var(--karta);
+    border: 1px solid var(--obramowanie);
+    border-left: 4px solid var(--glowny);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+}
+.wizyta-glowne { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.wizyta-data { font-weight: 700; color: var(--glowny-ciemny); }
+.wizyta-spec { color: #555; }
+.wizyta-cel { margin: 10px 0 0; font-style: italic; color: #444; }
+.wizyta-miniona { border-left-color: #bbb; opacity: 0.75; }
+.wizyta-miniona .wizyta-data { color: #777; }
+
+.anuluj-wizyte {
+    margin-top: 12px;
+    background: #fff;
+    color: #e53935;
+    border: 1px solid #e53935;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.anuluj-wizyte:hover { background: #e53935; color: #fff; }
+
+.podtytul { color: #666; margin-top: -8px; margin-bottom: 20px; }
+
+/* Wiersz minionej wizyty w panelu admina – wyszarzony */
+.tabela tr.wiersz-miniony { opacity: 0.55; }
+
+/* =========================================================
+   Ćwiczenia w kafelkach (kostkach) – powiększanie na hover
+   ========================================================= */
+.kostki {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 22px;
+    margin-top: 10px;
+}
+
+.kostka {
+    background: var(--karta);
+    border: 1px solid var(--obramowanie);
+    border-radius: 14px;
+    overflow: hidden;
+    /* płynna animacja powiększenia i cienia */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* EFEKT: po najechaniu kafelek lekko się powiększa i unosi */
+.kostka:hover {
+    transform: scale(1.06);
+    box-shadow: 0 10px 24px rgba(44, 106, 147, 0.25);
+    z-index: 2;
+    position: relative;
+}
+
+.kostka-link {
+    display: block;
+    text-decoration: none;
+    color: var(--tekst);
+}
+
+.kostka-foto {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;       /* zdjęcie wypełnia kafelek bez zniekształceń */
+    display: block;
+}
+
+.kostka-tresc { padding: 14px 16px; }
+
+.kostka-kat {
+    display: inline-block;
+    background: var(--tlo);
+    color: var(--glowny-ciemny);
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.kostka-tytul {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    color: var(--glowny-ciemny);
+}
+
+.kostka-poziom { font-size: 0.85rem; margin-bottom: 4px; }
+.kostka-autor { margin: 0; font-size: 0.82rem; color: #777; }
+
+.kostka-akcje {
+    display: flex;
+    gap: 14px;
+    padding: 10px 16px;
+    border-top: 1px solid var(--obramowanie);
+}
+.kostka-akcje a { font-size: 0.85rem; }
